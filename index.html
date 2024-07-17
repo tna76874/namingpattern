@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Übergabeprotokoll für Schuljahre</title>
+</head>
+<body>
+<h2>Übergabeprotokoll für Schuljahre</h2>
+<form id="formular">
+    <label for="stufe">Stufe:</label>
+    <select id="stufe" name="stufe">
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+    </select><br><br>
+
+    <label for="zug">Zug:</label>
+    <select id="zug" name="zug">
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+        <option value="_">Mischgruppe</option>
+    </select><br><br>
+    
+    <label for="fach">Fach:</label>
+    <select id="fach" name="fach">
+        <option value="D">Deutsch</option>
+        <option value="M">Mathematik</option>
+        <option value="E">Englisch</option>
+        <option value="F">Französisch</option>
+        <option value="RU">Russisch</option>
+        <option value="REV">evangelische Religion</option>
+        <option value="RRK">katholische Religion</option>
+        <option value="ETH">Ethik</option>
+        <option value="G">Geschichte</option>
+        <option value="GEO">Geographie</option>
+        <option value="GK">Gemeinschaftskunde</option>
+        <option value="WBS">Wirtschaft/Berufs- und Studienorientierung</option>
+        <option value="PH">Physik</option>
+        <option value="CH">Chemie</option>
+        <option value="BIO">Biologie</option>
+        <option value="MU">Musik</option>
+        <option value="BK">Bildende Kunst</option>
+        <option value="SPW">Sport weiblich</option>
+        <option value="SPM">Sport männlich</option>
+        <option value="PGK">Praktischer Grundkurs</option>
+        <option value="KA">Kurs A</option>
+        <option value="KB">Kurs B</option>
+        <option value="KC">Kurs C</option>
+        <option value="KD">Kurs D</option>
+        <option value="BMB">Basiskurs Medienbildung</option>
+        <option value="INF">Aufbaukurs Informatik</option>        
+    </select><br><br>
+    
+    <label for="kuerzel">Kürzel:</label>
+    <input type="text" id="kuerzel" name="kuerzel"><br><br>
+    
+</form>
+
+<p id="pattern"></p>
+
+<script>
+    // Funktion, die aufgerufen wird, wenn sich ein Eingabefeld ändert
+    function handleInputChange() {
+        const stufe = document.getElementById('stufe').value;
+        const fach = document.getElementById('fach').value;
+        const kuerzel = document.getElementById('kuerzel').value;
+        const zug = document.getElementById('zug').value;
+        const zeitraum = '23-24';
+        let pattern;
+        if (stufe && fach && kuerzel) {
+            if (zug === "_") {
+                pattern = `${stufe}_${fach}_${kuerzel}_${zeitraum}`;
+            } else {
+                pattern = `${stufe}${zug}_${fach}_${kuerzel}_${zeitraum}`;
+            }
+            
+            document.getElementById('pattern').textContent = `Datei benennen als: ${pattern}`;
+        }
+    }
+    
+    // Eventlistener für Änderungen in den Eingabefeldern
+    document.getElementById('stufe').addEventListener('change', handleInputChange);
+    document.getElementById('fach').addEventListener('change', handleInputChange);
+    document.getElementById('kuerzel').addEventListener('input', handleInputChange);
+    document.getElementById('zug').addEventListener('change', handleInputChange);
+</script>
+</body>
+</html>
