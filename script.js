@@ -2,7 +2,7 @@ function generateYearRange() {
     var currentDate = new Date();
     var currentYear = currentDate.getFullYear();
     var nextYear = currentYear + 1;
-    var isFirstYearCurrent = currentDate.getMonth() < 8;
+    var isFirstYearCurrent = currentDate.getMonth() < 10;
 
     var firstYear = isFirstYearCurrent ? currentYear - 1 : currentYear;
     var secondYear = isFirstYearCurrent ? currentYear : nextYear;
