@@ -63,33 +63,11 @@
     
 </form>
 
-<p id="pattern"></p>
+<p id="pattern" onclick="copyToClipboard()"></p>
+<div id="overlay">Kopiert</div>
 
-<script>
-    // Funktion, die aufgerufen wird, wenn sich ein Eingabefeld ändert
-    function handleInputChange() {
-        const stufe = document.getElementById('stufe').value;
-        const fach = document.getElementById('fach').value;
-        const kuerzel = document.getElementById('kuerzel').value;
-        const zug = document.getElementById('zug').value;
-        const zeitraum = '23-24';
-        let pattern;
-        if (stufe && fach && kuerzel) {
-            if (zug === "_") {
-                pattern = `${stufe}_${fach}_${kuerzel}_${zeitraum}`;
-            } else {
-                pattern = `${stufe}${zug}_${fach}_${kuerzel}_${zeitraum}`;
-            }
-            
-            document.getElementById('pattern').textContent = `Datei benennen als: ${pattern}`;
-        }
-    }
-    
-    // Eventlistener für Änderungen in den Eingabefeldern
-    document.getElementById('stufe').addEventListener('change', handleInputChange);
-    document.getElementById('fach').addEventListener('change', handleInputChange);
-    document.getElementById('kuerzel').addEventListener('input', handleInputChange);
-    document.getElementById('zug').addEventListener('change', handleInputChange);
-</script>
+
+<script src="script.js"></script>
+
 </body>
 </html>
